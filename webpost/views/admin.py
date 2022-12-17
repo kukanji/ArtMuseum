@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.contrib.auth import authenticate, login, logout
-from .models import ReviewModel
+from ..models import ReviewModel
 from django.views.generic import CreateView
 from django.urls import reverse_lazy
 
@@ -20,7 +20,6 @@ def signupview(request):
     # サインアップ後にサイトに遷移する
     return render(request, 'signup.html', {})
 
-
 def loginview(request):
     if request.method == 'POST':
         username_data = request.POST['username_data']
@@ -36,36 +35,6 @@ def loginview(request):
     # ログイン用のボタンをサイトに設置しておいてログイン後はサイトに戻れるようにする
     return render(request, 'login.html')
 
-
-def listview(request):
-    object_list = ReviewModel.objects.all()
-    return render(request, 'list.html', {'object_list': object_list})
-
-
-def detailview(request, pk):
-    object = ReviewModel.objects.get(pk = pk)
-    return render(request, 'detail.html', {'object': object})
-
-
-class CreateClass(CreateView):
-    template_name = 'create.html'
-    model = ReviewModel
-    fields = ('title', 'content', 'author', 'images', 'evaluation')
-    success_url = reverse_lazy('list')
-
-
 def logoutview(request):
     logout(request)
     return redirect('login')
-
-
-def evaluationview(request, pk):
-    post = ReviewModel.objects.get(pk = pk)
-    author_name = request.user.get_username() + str(request.user.id)
-    if author_name in post.useful_review_record:
-        return redirect('list')
-    else:
-        post.useful_review = post.useful_review + 1
-        post.useful_review_record = post.useful_review_record + author_name
-        post.save()
-        return redirect('list')
