@@ -17,6 +17,7 @@ def signupview(request):
             return render(request, 'signup.html', {'error': 'このユーザーは既に登録されています。'})
     else:
         return render(request, 'signup.html', {})
+    # サインアップ後にサイトに遷移する
     return render(request, 'signup.html', {})
 
 
@@ -32,6 +33,7 @@ def loginview(request):
             return redirect('list')
         else:
             return redirect('login')
+    # ログイン用のボタンをサイトに設置しておいてログイン後はサイトに戻れるようにする
     return render(request, 'login.html')
 
 
@@ -67,4 +69,3 @@ def evaluationview(request, pk):
         post.useful_review_record = post.useful_review_record + author_name
         post.save()
         return redirect('list')
-        
