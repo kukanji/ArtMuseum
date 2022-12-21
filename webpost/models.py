@@ -14,16 +14,15 @@ class ReviewModel(models.Model):
     useful_review_record = models.TextField()
     evaluation = models.CharField(max_length=10, choices = EVALUATION_CHOICES) 
 
-
-class ImageModel(models.Model):
-    image = models.ImageField(upload_to='')
-    category_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    author_id = models.ForeignKey(User, on_delete=models.CASCADE)
-
-
 class CategoryModel(models.Model):
-    name = models.ForeignKey(User, on_delete=models.CASCADE)
-    author_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+    author_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name='author_category')
     description1 = models.TextField()
     description2 = models.TextField()
     laugage = models.IntegerField(default=1)
+
+
+class ImageModel(models.Model):
+    image = models.ImageField(upload_to='')
+    category_id = models.ForeignKey(CategoryModel, on_delete=models.CASCADE)
+    author_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name='author_image')
