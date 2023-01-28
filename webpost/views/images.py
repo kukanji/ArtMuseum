@@ -8,22 +8,24 @@ from django.urls import reverse_lazy
 
 # トップページ
 def top(request):
-    return render(request, 'top.html')
+    author_list = User.objects.all()
+    return render(request, 'top.html', {'author_list': author_list})
 
 # ユーザーごとのホームページ（カテゴリー名も表示しておく）
 def user(request, username):
     # ユーザーのカテゴリーデータをuser.htmlに送らなくてはならない
     user = User.objects.filter(username=username)
     category_list = CategoryModel.objects.filter(author_id = user[0])
-    return render(request, 'user.html', {'object_list': category_list})
+    return render(request, 'user.html', {'category_list': category_list})
 
 # 写真のリスト表示
-def images_listview(request, username):
+def images_listview(request, username, lcategory_list):
     # ユーザーを取得
     user = User.objects.filter(username=username)
     # そのユーザーの画像を取得、カテゴリーモデルから写真のリストを取得する
-    image_list = ImageModel.objects.filter(author_id=user[0])
-    return render(request, 'images_list.html', {'object_list': image_list})
+    image_list = ImageModel.objects.filter(author_id=user[0], )
+    category_list = CategoryModel.objects.filter(author_id = user[0])
+    return render(request, 'images_list.html', {'object_list': image_list, 'category_list': category_list})
 
 # 写真リスト内の写真をタップすると写真を拡大する
 def imageview(request, pk):
@@ -32,17 +34,17 @@ def imageview(request, pk):
     return render(request, 'image.html', {'object': object})
 
 # 新しいカテゴリーを作成した後
-class CreateCategory(CreateView): 
-    template_name = 'create_category.html'
-    model = CategoryModel
-    fields = ('name', 'author_id', 'description1', 'description2', 'language')
-    success_url = reverse_lazy('user.html')
-
-class CreateImage(CreateView):
-    template_name = 'create_image.html'
-    model = ImageModel
-    fields = ('image', 'category_id', 'author_id')
-    success_url = reverse_lazy('images_list')
+#class CreateCategory(CreateView): 
+#    template_name = 'create_category.html'
+#    model = CategoryModel
+#    fields = ('name', 'author_id', 'description1', 'description2', 'language')
+#    success_url = reverse_lazy('user.html')
+#
+#class CreateImage(CreateView):
+#    template_name = 'create_image.html'
+#    model = ImageModel
+#    fields = ('image', 'category_id', 'author_id')
+#    success_url = reverse_lazy('images_list')
 
 
 
