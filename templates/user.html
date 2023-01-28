@@ -1,0 +1,33 @@
+<html>
+    <head>
+		<title>{{ category_list.author_id }}</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	</head>
+    <body style="background:#d5eee6;color:#336699">
+            <div style="text-align:center">
+                <h1 style="font-size:x-large;color:#9933ff">
+                    Home
+                </h1>
+                <h1 style="font-size:x-large;color:#cc0099">
+                    Hi Welcome to my page!🎉 
+                </h1>
+                <p>{{ category_list.description1 }}</p>
+                <p>
+                    <a href="lets_go.png">
+                        <img src="lets_go.png" style="width:50%">
+                    </a>
+                </p>
+                </h2>
+                <h2 style="font-size:x-large;color:#ffa500">
+                    Works
+                </h2>
+            <nav>
+                {% for item in category_list %}
+                    <ul>
+                        <li><a href="{% url 'images_list' item.author.username item.name %}" calss="btn btn-primary">{{item.name}}</a></li>
+                    </ul>
+                {% endfor %}
+            </nav>
+            <p>{{ category_list.description2 }}</p>
+    </body>
+</html>
