@@ -14,15 +14,22 @@ from django.contrib.auth.models import User
     useful_review_record = models.TextField()
     evaluation = models.CharField(max_length=10, choices = EVALUATION_CHOICES) 
 """
-class CategoryModel(models.Model):
+class Category(models.Model):
     name = models.CharField(max_length=100)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='author_category')
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     description1 = models.TextField()
     description2 = models.TextField()
     language = models.IntegerField(default=1)
 
 
-class ImageModel(models.Model):
-    image = models.ImageField(upload_to='')
-    category = models.ManyToManyField(CategoryModel)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='author_image')
+class Image(models.Model):
+    image = models.ImageField(upload_to='images')
+    category = models.ManyToManyField(Category)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+
+class UserHome(models.Model):
+    #name = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='user_home')
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    description1 = models.TextField()
+    description2 = models.TextField()
