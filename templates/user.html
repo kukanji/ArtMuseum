@@ -1,6 +1,6 @@
 <html>
     <head>
-		<title>{{ category_list.author_id }}</title>
+		<title>{{ username }}</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1.0">
 	</head>
     <body style="background:#d5eee6;color:#336699">
@@ -9,12 +9,12 @@
                     Home
                 </h1>
                 <h1 style="font-size:x-large;color:#cc0099">
-                    Hi Welcome to my page!🎉 
+                    Hi Welcome to {{ username }}!🎉 
                 </h1>
-                <p>{{ category_list.description1 }}</p>
+                <p>説明１：{{ user_home.description1 }}</p>
                 <p>
-                    <a href="lets_go.png">
-                        <img src="lets_go.png" style="width:50%">
+                    <a href="{{user_home.image.url}}">
+                        <img src="{{user_home.image.url}}" style="width:50%">
                     </a>
                 </p>
                 </h2>
@@ -28,6 +28,6 @@
                     </ul>
                 {% endfor %}
             </nav>
-            <p>{{ category_list.description2 }}</p>
+            <p>説明２：{{ user_home.description2 }}</p>
     </body>
 </html>
