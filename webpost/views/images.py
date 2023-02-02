@@ -15,9 +15,9 @@ def top(request):
 def user(request, username):
     # ユーザーのカテゴリーデータをuser.htmlに送らなくてはならない
     user = User.objects.get(username=username)
-    category_list = Category.objects.filter(author = user)
+    categories = Category.objects.filter(author = user)
     user_home = UserHome.objects.get(author = user)
-    return render(request, 'user.html', {'category_list': category_list, 
+    return render(request, 'user.html', {'categories': categories, 
                                          'user_home': user_home,
                                          'username': username})
 
@@ -27,12 +27,13 @@ def images_list(request, username, category_name):
     # そのユーザーの画像を取得、カテゴリーモデルから写真のリストを取得する
     image_list = Image.objects.filter(category = category)
     # ユーザーを取得
-    #user = User.objects.get(username=username)
-    #category_list = Category.objects.filter(author = user)
+    user = User.objects.get(username=username)
+    categories = Category.objects.filter(author = user)
     category = Category.objects.get(name = category_name)
     return render(request, 'images_list.html', {
         'image_list': image_list,
         'category': category,
+        'categories': categories,
         'username': username,
         })
 
