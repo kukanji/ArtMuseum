@@ -1,60 +1,37 @@
 <html>
     <head>
         <title>
-            KASANE'S Works
+            {{ username }} Works
         </title>
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
     </head>
     <body style="background:#d5eee6;color:#336699">
 		<div style="text-align:center">
 			<h1 style="font-size:x-large;color:#cc0099">
-              My friend
+            {{ category.name }}
             </h1>
-            <p>
-                こんにちは！ここでは私が最近描いた友達のイラストを載せています。<br>
-                大好きな2人なので描くことができて嬉しいです(*´ω｀)
-            </p>
+                <p>{{ category.description1 }}</p>
             <div style="display: grid;grid-gap: 10px;grid-template-columns: 1fr 1fr">
-                <a href="ayane_pan.jpg">
-				<img src="ayane_pan.jpg" style="object-fit: cover;width:100%">
-                </a>
-                <a href="amane_noton.jpg">
-                <img src="amane_noton.jpg" style="object-fit: cover;width:100%">
-                </a>
+                {% for image in image_list %}
+                    <a href="{{ image.image.url }}">
+                    <img src="{{ image.image.url }}" style="object-fit: cover;width:100%">
+                    </a>
+                {% endfor %}
             </div>
-            <p>
-            左の子は私が高校受験のために通っていた画塾で知り合いました！<br>
-            明るくて超面白くて毎朝教室で朝ごはんを食べている彼女が大好きです✨<br>
-            右の子は小学校高学年から仲の良い女の子です！<br>
-            精神的にちょっとまいってた時期があったんですけど、そんな時もずっと一緒にいてくれて優しくて面白い最高の友達です(´;ω;｀)♡<br>
-            自分の中では友達よりも家族に近いです笑<br>
-            他の大好きな友達も描いていきたいです！(*´▽｀*)
-            </p>
-            <p>
-                良ければ他の作品も見て行ってください🌸
-            </p>
+                <p>{{ category.description2 }}</p>
             <h2 style="font-size:x-large;color:#ffa500">
                 Other works
             </h2>
             <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="kawaii.html">Pretty pictures</a></li>
-                    <li><a href="colorful.html">colorful pictures</a></li>
-                    <li><a href="identityV.html">IdentityV pictures</a></li>
-                    <li><a href="stilllife.html">Stilllife pictures</a></li>
-                    <li><a href="imaginary.html">Imaginary dessin</a></li>
-                </ul>
-            </nav> 
-            <p>
-                これは英語版の方です！興味のある方はぜひ見にきてください(*´▽｀*)<br>
-            <a href="https://kasanefunk.github.io/kasanesworks/index.html">English ver.</a>
-            </p>
-            <p>
-                これは私のインスタグラムのアカウントです。<br>
-                このサイトに載せていない作品や落書きが多くあがっているのでぜひ遊びにきてください(*´ω｀)<br>
-            <a href="https://www.instagram.com/pino_kasane/">pino_kasane</a>
-            </p>
+                    <ul>
+                        <li><a href="{% url 'user' username %}" class="btn btn-primary">Home</a></li>
+                    </ul>
+                {% for item in categories %}
+                    <ul>
+                        <li><a href="{% url 'images_list' item.author.username item.name %}" calss="btn btn-primary">{{item.name}}</a></li>
+                    </ul>
+                {% endfor %}
+            </nav>
         </div>
     </body>
 </html>
