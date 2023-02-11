@@ -17,7 +17,7 @@
                 </h2>
             <nav>
                 {% for author in author_list %}
-                    <ul style="list-style-type: None;">
+                    <ul style="list-style-type: none;">
                         <li><a href="{% url 'user' author.username %}" calss="btn btn-primary">{{author.username}}</a></li>
                     </ul>
                 {% endfor %}
