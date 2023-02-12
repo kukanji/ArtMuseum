@@ -1,7 +1,7 @@
 # 登録されている著書ごとに画像を閲覧することができるウェブアプリ
 
 # 作成の動機
-私の妹が、カテゴリーごとに画像をコメントなどを添えてHTMLでサイト（url:https://kasanefunk.github.io/kasanesworks/kasaneworks.japanese/index.html）
+私の妹が、カテゴリーごとに画像をコメントなどを添えてHTMLでサイトurl:https://kasanefunk.github.io/kasanesworks/kasaneworks.japanese/index.html
 を作っていたのですが、管理画面から画像やコメント等を登録できるようにしたいと言っていたことがきっかけで今回このようなウェブアプリを作ることになりました。
 
 # 苦労したこと
