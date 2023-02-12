@@ -10,7 +10,7 @@
 			<h1 style="font-size:x-large;color:#cc0099">
             {{ category.name }}
             </h1>
-                <p>{{ category.description1 }}</p>
+                <p>{{ category.description1 | linebreaksbr }}</p>
             <div style="display: grid;grid-gap: 10px;grid-template-columns: 1fr 1fr">
                 {% for image in image_list %}
                     <a href="{{ image.image.url }}">
@@ -18,16 +18,16 @@
                     </a>
                 {% endfor %}
             </div>
-                <p>{{ category.description2 }}</p>
+                <p>{{ category.description2 | linebreaksbr }}</p>
             <h2 style="font-size:x-large;color:#ffa500">
                 Other works
             </h2>
             <nav>
-                    <ul>
+                    <ul style="list-style-type: none;">
                         <li><a href="{% url 'user' username %}" class="btn btn-primary">Home</a></li>
                     </ul>
                 {% for item in categories %}
-                    <ul>
+                    <ul style="list-style-type: None;">
                         <li><a href="{% url 'images_list' item.author.username item.name %}" calss="btn btn-primary">{{item.name}}</a></li>
                     </ul>
                 {% endfor %}
