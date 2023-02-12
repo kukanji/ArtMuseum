@@ -23,7 +23,7 @@
                 </h2>
             <nav>
                 {% for item in categories %}
-                    <ul style="list-style-type: None;">
+                    <ul style="list-style-type: none;">
                         <li><a href="{% url 'images_list' item.author.username item.name %}" calss="btn btn-primary">{{item.name}}</a></li>
                     </ul>
                 {% endfor %}
