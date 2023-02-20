@@ -8,7 +8,7 @@
 ・もともとはログイン画面やログアウト機能、画像やコメントの追加機能も自分でPythonやHTMLのコードを作っていたのですが、管理画面と非管理画面で分けずに非管理画面から管理画面へとレンダリングするやりかたですとセキュリティ上の問題があったために管理画面はdjangoのadminを使う形式に変えるためにコードを大幅に修正したこと。
 
 # システム構成
-![ダイアグラム](system_structure.png)
+<img width="551" alt="system_structure" src="https://user-images.githubusercontent.com/111495470/220122995-132bc2dd-dcad-4ba0-a049-e96bcb64f216.png">
 
 ## 矢印１
 
