@@ -10,7 +10,7 @@
 # システム構成
 <img width="551" alt="system_structure" src="https://user-images.githubusercontent.com/111495470/220122995-132bc2dd-dcad-4ba0-a049-e96bcb64f216.png">
 
-## 矢印１
+使用言語はPythonでフレームワークにはDjangoを使いました。デプロイにはPythonanywhereを使いしました。開発時にはPostgreSQLを使っていましたが、PythonanywhereではPostgreSQLを使うことができなかったためPythonanywhere上ではMySQLを使っています。サイト管理画面にはDjangoのadminを使いました。
 
 # 使用技術
 ・Python
