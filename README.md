@@ -26,6 +26,10 @@ https://kukanji.pythonanywhere.com/kasane/
 <img width="938" alt="CategoryPage2" src="https://user-images.githubusercontent.com/111495470/221401924-12cfeab4-7417-46c6-81e6-8f29ea177c19.png">
 <img width="946" alt="CategoryPage3" src="https://user-images.githubusercontent.com/111495470/221401927-2a55240f-7ebf-4f33-a1cb-c26fe83c6f56.png">
 
+・管理画面
+
+<img width="960" alt="admin" src="https://user-images.githubusercontent.com/111495470/221403557-ac6815c3-f550-4312-a4d3-15174fac7779.png">
+
 # システム構成
 <img width="614" alt="system_structure" src="https://user-images.githubusercontent.com/111495470/221402042-84a54075-fd98-4862-8d82-ffb5369bfee3.png">
 
