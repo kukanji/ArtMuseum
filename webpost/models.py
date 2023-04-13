@@ -15,21 +15,28 @@ from django.contrib.auth.models import User
     evaluation = models.CharField(max_length=10, choices = EVALUATION_CHOICES) 
 """
 class Category(models.Model):
-    name = models.CharField(max_length=100)
+    categoryName = models.CharField(max_length=100)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     description1 = models.TextField()
     description2 = models.TextField()
     language = models.IntegerField(default=1)
-
-
+    def __str__(self):
+        return self.categoryName
+    
 class Image(models.Model):
     image = models.ImageField(upload_to='images')
     category = models.ManyToManyField(Category)
+    imageName = models.CharField(max_length=100)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.imageName
 
 class UserHome(models.Model):
     #name = models.CharField(max_length=100)
     image = models.ImageField(upload_to='user_home')
+    userHomeName = models.CharField(max_length=100)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     description1 = models.TextField()
     description2 = models.TextField()
+    def __str__(self):
+        return self.userHomeName
