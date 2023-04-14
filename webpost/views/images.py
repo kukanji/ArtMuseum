@@ -24,13 +24,13 @@ def user(request, username):
 
 # 写真のリスト表示
 def images_list(request, username, category_name):
-    category = Category.objects.get(name = category_name)
+    category = Category.objects.get(categoryName = category_name)
     # そのユーザーの画像を取得、カテゴリーモデルから写真のリストを取得する
     image_list = Image.objects.filter(category = category)
     # ユーザーを取得
     user = User.objects.get(username=username)
     categories = Category.objects.filter(author = user)
-    category = Category.objects.get(name = category_name)
+    category = Category.objects.get(categoryName = category_name)
     return render(request, 'images_list.html', {
         'image_list': image_list,
         'category': category,
