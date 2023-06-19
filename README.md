@@ -32,6 +32,7 @@ https://kukanji.pythonanywhere.com/kasane/
 
 # システム構成
 <img width="614" alt="system_structure" src="https://user-images.githubusercontent.com/111495470/221402042-84a54075-fd98-4862-8d82-ffb5369bfee3.png">
+<img width="959" alt="image" src="https://github.com/kukanji/webproject/assets/111495470/ad80dd09-0896-4552-8e54-59597deb31ed">
 
 使用言語はPythonでフレームワークにはDjangoを使いました。デプロイにはPythonanywhereを使いしました。開発時にはPostgreSQLを使っていましたが、PythonanywhereではPostgreSQLを使うことができなかったためPythonanywhere上ではMySQLを使っています。サイト管理画面にはDjangoのadminを使いました。
 
