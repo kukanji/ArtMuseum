@@ -8,7 +8,7 @@ urlpatterns = [
     #path('logout/', logoutview, name = 'logout'),
 
     # 非管理画面
-    path('', top, name = 'top'),
+    path('', top, name = 'top'),#nameはURLの逆解決をするために必要。top.htmlのaタグの部分で使っている。
     path('<str:username>/', user, name = 'user'),
     path('<str:username>/<str:category_name>/', images_list, name = 'images_list'),
     #path('<str:category_name>/image/<int:pk>', imageview, name = 'image'),
