@@ -21,6 +21,8 @@ class Category(models.Model):
     description1 = models.TextField()
     description2 = models.TextField()
     language = models.IntegerField(default=1)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
     def __str__(self):
         return self.categoryName
 
@@ -30,6 +32,8 @@ class Image(models.Model):
     category = models.ManyToManyField(Category)
     imageName = models.CharField(max_length=100)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
     def __str__(self):
         return self.imageName
 
@@ -41,5 +45,7 @@ class UserHome(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     description1 = models.TextField()
     description2 = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
     def __str__(self):
         return self.userHomeName
