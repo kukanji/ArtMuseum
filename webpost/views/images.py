@@ -5,6 +5,12 @@ from django.contrib.auth import authenticate, login, logout
 from ..models import Image, Category, UserHome
 from django.views.generic import CreateView
 from django.urls import reverse_lazy
+import logging
+
+logger = logging.getLogger(__name__)
+
+logger.setLevel(logging.DEBUG)
+formatter = logging.Formatter('%(asctime)s:%(levelname)s:%(message)s')
 
 # トップページ
 def top(request):
@@ -15,6 +21,7 @@ def top(request):
 def user(request, username):
     # ユーザーのカテゴリーデータをuser.htmlに送らなくてはならない
     user = User.objects.get(username=username)
+    logger.info(f"user:", user)
     categories = Category.objects.filter(author = user)
     user_home = UserHome.objects.get(author = user)
     return render(request, 'user.html', {'categories': categories, 
