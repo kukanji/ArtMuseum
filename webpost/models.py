@@ -28,8 +28,11 @@ class Image(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 
 class UserHome(models.Model):
-    #name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
     image = models.ImageField(upload_to='user_home')
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     description1 = models.TextField()
     description2 = models.TextField()
+
+    def __str__(self):
+        return self.name
