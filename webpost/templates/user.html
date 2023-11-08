@@ -26,7 +26,7 @@
             <nav>
                 {% for item in categories %}
                     <ul style="list-style-type: none;">
-                        <li><a href="{% url 'images_list' item.author.username item.categoryName %}" calss="btn btn-primary">{{item.categoryName}}</a></li>
+                        <li><a href="{% url 'images_list' item.author.username item.category_name %}" calss="btn btn-primary">{{item.categoryName}}</a></li>
                     </ul>
                 {% endfor %}
             </nav>
