@@ -4,8 +4,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+    path('users/', include('webpost.urls')),
     path('admin/', admin.site.urls),
-    path('', include('webpost.urls')),
     *static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT),
     *static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
     # path()はプログラムファイル,static()はCSS等の静的ファイルを呼び出す
