@@ -36,36 +36,3 @@ def images_list(request, username, category_name):
         'categories': categories,
         'username': username,
         })
-
-# 写真リスト内の写真をタップすると写真を拡大する
-#def imageview(request, pk):
-#    object = Image.objects.get(pk = pk)
-#    #username = object.author.username
-#    return render(request, 'image.html', {'object': object})
-
-# 新しいカテゴリーを作成した後
-#class CreateCategory(CreateView): 
-#    template_name = 'create_category.html'
-#    model = Category
-#    fields = ('name', 'author_id', 'description1', 'description2', 'language')
-#    success_url = reverse_lazy('user.html')
-#
-#class CreateImage(CreateView):
-#    template_name = 'create_image.html'
-#    model = Image
-#    fields = ('image', 'category_id', 'author_id')
-#    success_url = reverse_lazy('images_list')
-
-
-
-"""def evaluationview(request, pk):
-    post = ReviewModel.objects.get(pk = pk)
-    author_name = request.user.get_username() + str(request.user.id)
-    if author_name in post.useful_review_record:
-        return redirect('list')
-    else:
-        post.useful_review = post.useful_review + 1
-        post.useful_review_record = post.useful_review_record + author_name
-        post.save()
-        return redirect('list')
-"""
