@@ -60,7 +60,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_bootstrap5',
     'webpost.apps.WebpostConfig',
-    #'accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [
@@ -138,10 +137,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-# login and logout settings
-# LOGIN_URL = '/accounts/login/'
-# LOGIN_REDIRECT_URL = '/'
-# LOGOUT_REDIRECT_URL = '/'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
