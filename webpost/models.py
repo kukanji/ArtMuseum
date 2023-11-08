@@ -18,8 +18,8 @@ from django.contrib.auth.models import User
 class Category(models.Model):
     categoryName = models.CharField(max_length=100)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    description1 = models.TextField()
-    description2 = models.TextField()
+    description1 = models.TextField('description1', null=False, default="", blank=True)
+    description2 = models.TextField('description2', null=False, default="", blank=True)
     language = models.IntegerField(default=1)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -43,8 +43,8 @@ class UserHome(models.Model):
     image = models.ImageField(upload_to='user_home')
     userHomeName = models.CharField(max_length=100)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    description1 = models.TextField()
-    description2 = models.TextField()
+    description1 = models.TextField('description1', null=False, default="", blank=True)
+    description2 = models.TextField('description2', null=False, default="", blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     def __str__(self):
