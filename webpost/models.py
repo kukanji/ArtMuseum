@@ -15,37 +15,37 @@ from django.contrib.auth.models import User
     evaluation = models.CharField(max_length=10, choices = EVALUATION_CHOICES) 
 """
 # pretty picture や colorful pictureなどのカテゴリーテーブル
-class Category(models.Model):
-    categoryName = models.CharField(max_length=100)
+class category(models.Model):
+    name = models.CharField(max_length=100)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    description1 = models.TextField('description1', null=False, default="", blank=True)
-    description2 = models.TextField('description2', null=False, default="", blank=True)
+    description_top = models.TextField('description_top', null=False, default="", blank=True)
+    description_bottom = models.TextField('description_bottom', null=False, default="", blank=True)
     language = models.IntegerField(default=1)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     def __str__(self):
-        return self.categoryName
+        return self.name
 
 # 写真のモデル（テーブル）
-class Image(models.Model):
+class image(models.Model):
     image = models.ImageField(upload_to='images')
-    category = models.ManyToManyField(Category)
-    imageName = models.CharField(max_length=100)
+    category = models.ManyToManyField(category)
+    name = models.CharField(max_length=100)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     def __str__(self):
-        return self.imageName
+        return self.name
 
 # Homeの部分
-class UserHome(models.Model):
+class user_home(models.Model):
     #name = models.CharField(max_length=100)
     image = models.ImageField(upload_to='user_home')
-    userHomeName = models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    description1 = models.TextField('description1', null=False, default="", blank=True)
-    description2 = models.TextField('description2', null=False, default="", blank=True)
+    description_top = models.TextField('description_top', null=False, default="", blank=True)
+    description_bottom = models.TextField('description_bottom', null=False, default="", blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     def __str__(self):
-        return self.userHomeName
+        return self.name

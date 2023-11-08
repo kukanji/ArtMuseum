@@ -1,9 +1,9 @@
 from django.contrib import admin
 #from .models import ReviewModel
-from.models import Category, Image, UserHome
+from.models import category, image, user_home
 # Register your models here.
 
 #admin.site.register(ReviewModel)
-admin.site.register(Category)
-admin.site.register(Image)
-admin.site.register(UserHome)
+admin.site.register(category)
+admin.site.register(image)
+admin.site.register(user_home)

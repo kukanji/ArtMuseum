@@ -1,10 +1,6 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.contrib.auth.models import User
-from django.db import IntegrityError
-from django.contrib.auth import authenticate, login, logout
-from ..models import Image, Category, UserHome
-from django.views.generic import CreateView
-from django.urls import reverse_lazy
+from ..models import image, category, user_home
 import logging
 
 logger = logging.getLogger(__name__)
@@ -24,21 +20,21 @@ def user(request, username):
     logger.info("write logger under this comment")
     logger.info(f"username: {username}")
     user = User.objects.get(username=username)
-    categories = Category.objects.filter(author = user)
-    user_home = UserHome.objects.get(author = user)
+    logger.info(f"user: {user}")
+    categories = category.objects.filter(author = user)
+    single_user_home = user_home.objects.get(author = user)
     return render(request, 'user.html', {'categories': categories, 
-                                         'user_home': user_home,
+                                         'user_home': single_user_home,
                                          'username': username})
 
 # 写真のリスト表示
 def images_list(request, username, category_name):
-    category = Category.objects.get(categoryName = category_name)
+    single_category = category.objects.get(name = category_name)
     # そのユーザーの画像を取得、カテゴリーモデルから写真のリストを取得する
-    image_list = Image.objects.filter(category = category)
+    image_list = image.objects.filter(category = single_category)
     # ユーザーを取得
     user = User.objects.get(username=username)
-    categories = Category.objects.filter(author = user)
-    category = Category.objects.get(categoryName = category_name)
+    categories = category.objects.filter(author = user)
     return render(request, 'images_list.html', {
         'image_list': image_list,
         'category': category,
