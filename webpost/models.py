@@ -26,6 +26,5 @@ class UserHome(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     description1 = models.TextField()
     description2 = models.TextField()
-
     def __str__(self):
         return self.name
