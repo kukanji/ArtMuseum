@@ -22,6 +22,7 @@ class Image(models.Model):
 
 class UserHome(models.Model):
     name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
     image = models.ImageField(upload_to='user_home')
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     description1 = models.TextField()
